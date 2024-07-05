@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Drift</title>
+    <link rel="stylesheet" href="./Assets/index.css">
+    <link rel="stylesheet" href="./Assets/buttons.css">
+    <link rel="stylesheet" href="./Assets/table.css">
+    <link rel="stylesheet" href="./Assets/responsive.css">
+</head>
+<body>
+
+    <div class="centered">
+        <div class="row">
+            <div class="column1">
+                <div class="container1">
+                    <img id="diceimage" src="./Assets/img/Dice1.png" alt="">
+                </div>
+            </div>
+        
+            <div class="column">
+                <div class="container">
+                    <h2>Select Number (1-6):</h2>
+                    <h2 class="balance">Balance: 5000</h2>
+                    <div id="number" class="button-group">
+                        <button id="number1" class="number-btn" data-number="1">1</button>
+                        <button id="number2" class="number-btn" data-number="2">2</button>
+                        <button id="number3" class="number-btn" data-number="3">3</button>
+                        <button id="number4" class="number-btn" data-number="4">4</button>
+                        <button id="number5" class="number-btn" data-number="5">5</button>
+                        <button id="number6" class="number-btn" data-number="6">6</button>
+                    </div>
+                    <p class="numberselectionerror error"></p>
+                    <div>
+                        <input type="number" id="amount" placeholder="Enter bet amount">
+                        <p class="inputerror error"></p>
+                    </div>
+                    <button id="placeBet">Place Bet</button>
+                    <p class="result notification"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./Assets/script.js"></script>
+</body>
+</html>

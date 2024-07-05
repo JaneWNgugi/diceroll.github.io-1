@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px; /* Adjust the max-width as needed */
+    width: 100%;
+}
+
+.column, .column1 {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Default styling for smaller screens */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button-group button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 360px) and (max-width: 479px) {
+    .container, .container1 {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 719px) {
+    .button-group button {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 720px) and (max-width: 1079px) {
+    .button-group button {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 1080px) and (max-width: 1199px) {
+    .button-group button {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .button-group button {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+    .button-group button {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1600px) and (max-width: 1799px) {
+    .button-group button {
+        font-size: 2.2rem;
+    }
+}
+
+@media (min-width: 1800px) and (max-width: 1999px) {
+    .button-group button {
+        font-size: 2.4rem;
+    }
+}
+
+@media (min-width: 2000px) and (max-width: 2199px) {
+    .button-group button {
+        font-size: 2.6rem;
+    }
+}
+
+@media (min-width: 2200px) and (max-width: 2399px) {
+    .button-group button {
+        font-size: 2.8rem;
+    }
+}
+
+@media (min-width: 2400px) and (max-width: 2599px) {
+    .button-group button {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 2600px) {
+    .button-group button {
+        font-size: 3.2rem;
+    }
+}
