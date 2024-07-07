@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
             inputError.classList.remove();
             if (outcome === selectedNumber) {
                 balance += betAmount * 2; // 5:1 payout for correct guess
-                resultElement.textContent = `You won! The dice showed ${outcome}.`;
+                resultElement.textContent = `You won! Dice showed ${outcome}.`;
             } else {
                 balance -= betAmount;
-                resultElement.textContent = `You lost! The dice showed ${outcome}.`;
+                resultElement.textContent = `Dice showed ${outcome}.`;
             }
 
             balanceElement.textContent = `Balance: $${balance}`;

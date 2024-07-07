@@ -1,19 +1,95 @@
-body {
-    font-family: Arial, sans-serif;
+body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('./img/theme/bg2.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
 }
 
 .centered {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.cube {
+    position: relative;
+    width: 30vmin;
+    height: 30vmin;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg);
+    transition: transform 3s;
+    margin-bottom: 20px;
+}
+
+.face {
+    position: absolute;
+    width: 30vmin;
+    height: 30vmin;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.face img {
+    width: 100%;
+    height: 100%;
+}
+
+.front { transform: rotateY(0deg) translateZ(15vmin); }
+.back { transform: rotateY(180deg) translateZ(15vmin); }
+.right { transform: rotateY(90deg) translateZ(15vmin); }
+.left { transform: rotateY(-90deg) translateZ(15vmin); }
+.top { transform: rotateX(90deg) translateZ(15vmin); }
+.bottom { transform: rotateX(-90deg) translateZ(15vmin); }
+
+.content {
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.button-group .number-btn {
+    flex: 1;
+    min-width: 50px;
+    max-width: 100px;
+}
+
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.error {
+    color: red;
+}
+
+.notification {
+    margin-top: 20px;
+    color: green;
 }
 
 .row {

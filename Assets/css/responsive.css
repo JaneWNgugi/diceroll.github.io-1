@@ -1,0 +1,107 @@
+/* Base styles for mobile devices */
+body {
+    font-size: 16px;
+}
+
+.container {
+    width: 90%;
+    padding: 10px;
+}
+
+.dice-container {
+    width: 100%;
+    height: auto;
+}
+
+.cube {
+    width: 20vmin;
+    height: 20vmin;
+}
+
+.face {
+    width: 20vmin;
+    height: 20vmin;
+}
+
+.face img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Small devices (360px to 479px) */
+@media (min-width: 360px) and (max-width: 479px) {
+    .cube {
+        width: 18vmin;
+        height: 18vmin;
+    }
+
+    .face {
+        width: 18vmin;
+        height: 18vmin;
+    }
+}
+
+/* Medium devices (480px to 719px) */
+@media (min-width: 480px) and (max-width: 719px) {
+    .cube {
+        width: 22vmin;
+        height: 22vmin;
+    }
+
+    .face {
+        width: 22vmin;
+        height: 22vmin;
+    }
+}
+
+/* Large devices (720px to 1079px) */
+@media (min-width: 720px) and (max-width: 1079px) {
+    .cube {
+        width: 25vmin;
+        height: 25vmin;
+    }
+
+    .face {
+        width: 25vmin;
+        height: 25vmin;
+    }
+}
+
+/* Extra large devices (1080px to 1199px) */
+@media (min-width: 1080px) and (max-width: 1199px) {
+    .cube {
+        width: 30vmin;
+        height: 30vmin;
+    }
+
+    .face {
+        width: 30vmin;
+        height: 30vmin;
+    }
+}
+
+/* 2K devices (1200px to 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .cube {
+        width: 35vmin;
+        height: 35vmin;
+    }
+
+    .face {
+        width: 35vmin;
+        height: 35vmin;
+    }
+}
+
+/* 4K devices (1400px and above) */
+@media (min-width: 1400px) {
+    .cube {
+        width: 40vmin;
+        height: 40vmin;
+    }
+
+    .face {
+        width: 40vmin;
+        height: 40vmin;
+    }
+}

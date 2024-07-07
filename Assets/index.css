@@ -5,15 +5,7 @@
     
 
 }
-.centered {
 
-    background: rgba(41, 36, 36, 0.288);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: center;
-}
-  
   /* Create three equal columns that floats next to each other */
   .column {
     /* float: left;
@@ -56,15 +48,6 @@
 
 
 
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    /* background:linear-gradient(to right,rgb(55, 0, 255),rgb(0, 0, 0),rgb(0, 47, 134)); */
-    background-image: url('./img/theme/bg2.jpg');
-    /* background-color: rgb(150, 185, 180); */
-    background-size:cover;
-    background-repeat: no-repeat;
-  } 
   
   .topnav {
     position: relative;

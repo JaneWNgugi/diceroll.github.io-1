@@ -1,0 +1,191 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('../img/theme/bg2.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#placeBet {
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#placeBet:hover {
+    background: #01501f;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#number1 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #021325;
+    color: white;
+    font-size: 16px;
+}
+
+#number1.selected {
+    background-color: #000000;
+}
+#number1:hover {
+    background-color: #b30000;
+}
+#number2 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #ff00c8;
+    color: white;
+    font-size: 16px;
+}
+
+#number2.selected {
+    background-color: #011a35;
+}
+#number2:hover {
+    background-color: #b30000;
+}
+#number3 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #ff7b00;
+    color: white;
+    font-size: 16px;
+}
+
+#number3.selected {
+    background-color: #011a35;
+}
+#number3:hover {
+    background-color: #b30000;
+}
+#number4 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #0059ff;
+    color: white;
+    font-size: 16px;
+}
+
+#number4.selected {
+    background-color: #011a35;
+}
+#number4:hover {
+    background-color: #b30000;
+}
+#number5 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #1e7404;
+    color: white;
+    font-size: 16px;
+}
+
+#number5.selected {
+    background-color: #011a35;
+}
+#number5:hover {
+    background-color: #b30000;
+}
+#number6 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #ff000d;
+    color: white;
+    font-size: 16px;
+}
+
+#number6.selected {
+    background-color: #011a35;
+}
+#number6:hover {
+    background-color: #b30000;
+}
+
+
+p {
+    margin: 10px 0;
+}
+
+.dice-container {
+    margin: 20px 0;
+}
+
+#dice {
+    width: 100px;
+    height: 100px;
+    transition: transform 1s;
+}
+
+@keyframes roll {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+.roll {
+    animation: roll 1s;
+}
+.result{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 200;
+    color:orangered;
+}
+.error{
+    color:rgb(255, 0, 0);
+    font-size: 25px;
+    font-weight: 200;
+}
+.notification{
+    color:white
+
+}
