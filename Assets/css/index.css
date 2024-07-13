@@ -54,7 +54,7 @@ input, button {
     border: 1px solid #ccc;
     border-radius: 20px;
     cursor: pointer;
-    background-color: #021325;
+    background-color: #0355ad;
     color: white;
     font-size: 16px;
 }
@@ -188,4 +188,61 @@ p {
 .notification{
     color:white
 
+}
+
+#diceNumber1 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #3af700;
+    color: white;
+    font-size: 16px;
+}
+
+#diceNumber1.selected {
+    background-color: #000000;
+    color:white;
+}
+#diceNumber1:hover {
+    background-color: #fbff00;
+}
+#diceNumber2 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #0004f7;
+    color: white;
+    font-size: 16px;
+}
+
+#diceNumber2.selected {
+    background-color: #000000;
+    color:white;
+}
+#diceNumber2:hover {
+    background-color: #fbff00;
+    color: black;
+}
+#diceNumber3 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #0004f7;
+    color: white;
+    font-size: 16px;
+}
+
+#diceNumber3.selected {
+    background-color: #000000;
+    color:white;
+}
+#diceNumber3:hover {
+    background-color: #fbff00;
+    color: black;
 }
