@@ -32,7 +32,7 @@
 .bottom { transform: rotateX(-90deg) translateZ(10vmin); }
 
 .dice-container {
-    padding: 30px;
+    padding: 1px;
     display: flex;
     align-items: center;
     justify-content: center;

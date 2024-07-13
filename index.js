@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function rollDice(diceElement) {
         diceElement.style.transition = 'transform 3s';
         const outcome = Math.floor(Math.random() * 6) + 1;
-
         const additionalRotationX = Math.floor(Math.random() * 4) * 360;
         const additionalRotationY = Math.floor(Math.random() * 4) * 360;
 
@@ -69,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return outcome;
     }
-
+    
     placeBetButton.addEventListener('click', () => {
         const betAmount = parseFloat(amountInput.value);
         
@@ -106,30 +105,43 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     
         setTimeout(() => {
-            const win = outcomes.some(outcome => outcome === selectedNumber);
+            const matchingOutcomes = outcomes.filter(outcome => outcome === selectedNumber).length;
             let payoutMultiplier = 0;
     
-            if (selectedDice === 1) {
+            if (selectedDice === 1 && matchingOutcomes === 1) {
                 payoutMultiplier = 2;
             } else if (selectedDice === 2) {
-                payoutMultiplier = 3;
+                if (matchingOutcomes === 1) {
+                    payoutMultiplier = 2;
+                } else if (matchingOutcomes === 2) {
+                    payoutMultiplier = 3;
+                }
             } else if (selectedDice === 3) {
-                payoutMultiplier = 4;
+                if (matchingOutcomes === 1) {
+                    payoutMultiplier = 2;
+                } else if (matchingOutcomes === 2) {
+                    payoutMultiplier = 3;
+                } else if (matchingOutcomes === 3) {
+                    payoutMultiplier = 5;
+                }
             }
-    
-            if (win) {
+            // add winnings to the balance
+            if (payoutMultiplier > 0) {
                 balance += betAmount * payoutMultiplier;
                 resultElement.textContent = `You won! Dice showed ${outcomes.join(', ')}.`;
             } else {
                 resultElement.textContent = `You lost! Dice showed ${outcomes.join(', ')}.`;
             }
-    
+            // display current balance
             balanceElement.textContent = `Balance: $${balance}`;
+            // clear input
             amountInput.value = '';
+            // remove the selected buttons
             numberButtons.forEach(btn => btn.classList.remove('selected'));
             diceButtons.forEach(btn => btn.classList.remove('selected'));
+            // clear the selected number and dice variables
             selectedNumber = null;
             selectedDice = null;
-        }, 3000); // Duration of the roll animation
+        }, 3000); // Duration of the roll animation 3s
     });
 });
