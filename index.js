@@ -109,14 +109,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event listener for placing a bet
     placeBetButton.addEventListener('click', () => {
         const betAmount = parseFloat(amountInput.value);
-
+    
         // Clear error messages
         diceSelectionErrors.textContent = '';
         numberSelectionError1.textContent = '';
         numberSelectionError2.textContent = '';
         numberSelectionError3.textContent = '';
         inputError.textContent = '';
-
+    
         // Validate user inputs
         if (!selectedDice) {
             diceSelectionErrors.textContent = `Please select the number of dice you want to roll.`;
@@ -142,35 +142,40 @@ document.addEventListener('DOMContentLoaded', function () {
             inputError.textContent = `Insufficient balance!`;
             return;
         }
-
+    
         // Deduct the bet amount from balance
         balance -= betAmount;
         balanceElement.textContent = `Balance: Ksh${balance}`;
-
+    
         // Roll the dice and collect outcomes
         const outcomes = [];
         for (let i = 0; i < selectedDice; i++) {
             outcomes.push(rollDice(diceElements[i]));
         }
-
+    
         // Evaluate bet result after dice roll
         setTimeout(() => {
-            // Check if each dice outcome matches the user's prediction
-            const winningOutcomes = [selectedNumberDice1, selectedNumberDice2, selectedNumberDice3]
-                .slice(0, selectedDice)
-                .every((num, index) => num === outcomes[index]);
-
-            let payoutMultiplier = 0;
-
-            // Determine payout based on number of dice and matching outcomes
-            if (selectedDice === 1 && winningOutcomes) {
-                payoutMultiplier = 2;
-            } else if (selectedDice === 2 && winningOutcomes) {
-                payoutMultiplier = 3;
-            } else if (selectedDice === 3 && winningOutcomes) {
-                payoutMultiplier = 5;
+            // Collect user selections and outcomes
+            const selectedNumbers = [selectedNumberDice1, selectedNumberDice2, selectedNumberDice3].slice(0, selectedDice);
+            
+            // Check if predictions match the outcomes exactly
+            let exactMatches = 0;
+            for (let i = 0; i < selectedDice; i++) {
+                if (selectedNumbers[i] === outcomes[i]) {
+                    exactMatches++;
+                }
             }
-
+    
+            // Determine payout based on exact matches
+            let payoutMultiplier = 0;
+            if (exactMatches === 1) {
+                payoutMultiplier = 2; // 1 exact match
+            } else if (exactMatches === 2) {
+                payoutMultiplier = 3; // 2 exact matches
+            } else if (exactMatches === 3) {
+                payoutMultiplier = 5; // 3 exact matches
+            }
+    
             // Update balance and display result
             if (payoutMultiplier > 0) {
                 balance += betAmount * payoutMultiplier;
@@ -178,21 +183,18 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 resultElement.textContent = `You lost! Dice showed ${outcomes.join(', ')}.`;
             }
-
+    
             balanceElement.textContent = `Balance: Ksh${balance}`;
             amountInput.value = '';
             numberButtonsDice1.forEach(btn => btn.classList.remove('selected'));
             numberButtonsDice2.forEach(btn => btn.classList.remove('selected'));
             numberButtonsDice3.forEach(btn => btn.classList.remove('selected'));
             diceButtons.forEach(btn => btn.classList.remove('selected'));
-
+    
             // Display the user's selected numbers
-            const selectedNumbers = [selectedNumberDice1, selectedNumberDice2, selectedNumberDice3]
-                .filter(num => num !== null)
-                .slice(0, selectedDice);
             userSelectionNumbers.textContent = `You selected: ${selectedNumbers.join(', ')}`;
             dicePredictionSelection.style.display = 'none';
-
+    
             // Reset selected numbers and dice
             selectedNumberDice1 = null;
             selectedNumberDice2 = null;
@@ -200,4 +202,5 @@ document.addEventListener('DOMContentLoaded', function () {
             selectedDice = null;
         }, 3000);
     });
+    
 });
