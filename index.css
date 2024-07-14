@@ -5,57 +5,67 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 105vh;
     margin: 0;
+    padding: 0;
 }
 
 .container {
-    background: white;
-    padding: 30px;
+    overflow: visible;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #f8f9fa;
+    max-width: 90%; /* Adjusted for better responsiveness */
+    height: auto;
+    margin: 0 auto; /* Center container horizontally */
+    background-color: #ffffff;
     border-radius: 8px;
 }
 
 h1 {
-    margin-top: 100px;
-    margin-bottom: 0px;
+    margin-bottom: 10px; /* Added some margin */
     font-weight: 700;
-    font-size: 45px;
-}
-p {
-    margin: 1px 0;
-    font-size: 20px;
-    font-weight: 700;
-}
-label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: 700;
-    font-size: 20px;
+    font-size: 2.5rem; /* Responsive font size */
 }
 
-input, button {
+p {
+    font-size: 1.25rem; /* Responsive font size */
+    font-weight: 700;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    font-size: 1.25rem; /* Responsive font size */
+}
+
+.input-button-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack input and button vertically on smaller screens */
+    gap: 10px; /* Space between input and button */
+    margin: 10px 0; /* Space above and below the wrapper */
+}
+
+#amount {
     padding: 10px;
-    margin: 5px 0;
+    border-radius: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
+    flex: 1; /* Allow the input to grow and fill available space */
 }
 
 #placeBet {
     background: #007bff;
     color: white;
+    border-radius: 20px; 
     cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    flex-shrink: 0;
 }
 
 #placeBet:hover {
+    transform: scale(1.05); /* Reduced scale for better UX */
     background: #01501f;
 }
 
@@ -63,114 +73,74 @@ input, button {
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
     margin: 10px 0;
 }
 
-#number1 {
-    width: 40px;
-    height: 40px;
+.number-btn-dice1 {
+    width: 50px;
+    height: 50px;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
-    background-color: #0355ad;
+    background-color: #003cff;
     color: white;
     font-size: 16px;
+    transition: transform 0.3s;
 }
 
-#number1.selected {
+.number-btn-dice1.selected {
     background-color: #000000;
+    color: white;
 }
-#number1:hover {
+
+.number-btn-dice1:hover {
+    transform: scale(1.1);
     background-color: #b30000;
 }
-#number2 {
-    width: 40px;
-    height: 40px;
+
+.number-btn-dice2 {
+    width: 50px;
+    height: 50px;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
-    background-color: #ff00c8;
+    background-color: red;
     color: white;
     font-size: 16px;
+    transition: transform 0.3s;
 }
 
-#number2.selected {
-    background-color: #011a35;
+.number-btn-dice2.selected {
+    background-color: #000000;
+    color: white;
 }
-#number2:hover {
+
+.number-btn-dice2:hover {
+    transform: scale(1.1);
     background-color: #b30000;
 }
-#number3 {
-    width: 40px;
-    height: 40px;
+.number-btn-dice3 {
+    width: 50px;
+    height: 50px;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
-    background-color: #ff7b00;
+    background-color: green;
     color: white;
     font-size: 16px;
+    transition: transform 0.3s;
 }
 
-#number3.selected {
-    background-color: #011a35;
-}
-#number3:hover {
-    background-color: #b30000;
-}
-#number4 {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: #0059ff;
+.number-btn-dice3.selected {
+    background-color: #000000;
     color: white;
-    font-size: 16px;
 }
 
-#number4.selected {
-    background-color: #011a35;
-}
-#number4:hover {
+.number-btn-dice3:hover {
+    transform: scale(1.1);
     background-color: #b30000;
 }
-#number5 {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: #1e7404;
-    color: white;
-    font-size: 16px;
-}
-
-#number5.selected {
-    background-color: #011a35;
-}
-#number5:hover {
-    background-color: #b30000;
-}
-#number6 {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: #ff000d;
-    color: white;
-    font-size: 16px;
-}
-
-#number6.selected {
-    background-color: #011a35;
-}
-#number6:hover {
-    background-color: #b30000;
-}
-
-
-
 
 .dice-container {
     margin: 20px 0;
@@ -190,78 +160,81 @@ input, button {
 .roll {
     animation: roll 1s;
 }
-.result{
+
+.result, .error, .notification {
     text-align: center;
-    font-size: 25px;
-    font-weight: 200;
-    color:orangered;
-}
-.error{
-    color:rgb(255, 0, 0);
-    font-size: 25px;
-    font-weight: 200;
-}
-.notification{
-    color:white
-
+    font-size: 1.5rem; /* Responsive font size */
 }
 
-#diceNumber1 {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #3af700;
+.error {
+    color: rgb(255, 0, 0);
+}
+
+.notification {
     color: white;
-    font-size: 16px;
 }
 
-#diceNumber1.selected {
-    background-color: #000000;
-    color:white;
-}
-#diceNumber1:hover {
-    background-color: #fbff00;
-}
-#diceNumber2 {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #0004f7;
-    color: white;
-    font-size: 16px;
+#topdata {
+    padding-top: 30px;
 }
 
-#diceNumber2.selected {
-    background-color: #000000;
-    color:white;
+.dicepredictionselection {
+    border-radius: 30px;
+    background: linear-gradient(to left, rgba(0, 128, 128, 0), white);
+    border: 1px solid #00808049;
 }
-#diceNumber2:hover {
-    background-color: #fbff00;
+
+.matcheswon {
+    font-size: 1.125rem; /* Responsive font size */
+
     color: black;
 }
-#diceNumber3 {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #0004f7;
-    color: white;
-    font-size: 16px;
+
+/* Container for the paragraphs */
+.row-container {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr); /* Create 3 equal columns */
+    gap: 10px; /* Space between columns */
+    align-items: center; /* Center items vertically */
 }
 
-#diceNumber3.selected {
-    background-color: #000000;
-    color:white;
+.row-container p {
+    text-align: center; /* Center text within each paragraph */
 }
-#diceNumber3:hover {
-    background-color: #fbff00;
-    color: black;
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .row-container {
+        grid-template-columns: 1fr; /* Stack items vertically on smaller screens */
+    }
+
+    .input-button-wrapper {
+        flex-direction: column; /* Stack input and button vertically */
+    }
+
+    h1 {
+        font-size: 2rem; /* Smaller font size for headings */
+    }
+
+    p {
+        font-size: 1rem; /* Smaller font size for paragraphs */
+    }
+
+    label {
+        font-size: 1rem; /* Smaller font size for labels */
+    }
 }
-#topdata{
-    padding-top:30px;
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px; /* Less padding on very small screens */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .result, .error, .notification {
+        font-size: 1.25rem; /* Smaller font size for notifications */
+    }
 }
