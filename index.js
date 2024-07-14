@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // DOM elements
     const balanceElement = document.querySelector('.balance');
     const dice1 = document.getElementById('dice1');
     const dice2 = document.getElementById('dice2');
@@ -21,20 +22,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const diceSection2 = document.querySelector('.dice2selection');
     const diceSection3 = document.querySelector('.dice3selection');
 
+    // Initialize variables
     let balance = 5000;
     let selectedNumberDice1 = null;
     let selectedNumberDice2 = null;
     let selectedNumberDice3 = null;
     let selectedDice = null;
 
+    // Hide dice elements initially
     const diceElements = [dice1, dice2, dice3];
     diceElements.forEach(dice => dice.style.display = 'none');
 
+    // Hide prediction selection sections initially
     dicePredictionSelection.style.display = 'none';
     diceSection1.style.display = 'none';
     diceSection2.style.display = 'none';
     diceSection3.style.display = 'none';
 
+    // Event listeners for number buttons
     numberButtonsDice1.forEach(button => {
         button.addEventListener('click', () => {
             numberButtonsDice1.forEach(btn => btn.classList.remove('selected'));
@@ -59,12 +64,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Event listener for dice buttons
     diceButtons.forEach(button => {
         button.addEventListener('click', () => {
             diceButtons.forEach(btn => btn.classList.remove('selected'));
             button.classList.add('selected');
             selectedDice = parseInt(button.getAttribute('data-number'));
 
+            // Display relevant dice sections based on selected number of dice
             diceElements.forEach((dice, index) => {
                 dice.style.display = index < selectedDice ? 'block' : 'none';
             });
@@ -76,12 +83,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Function to roll the dice
     function rollDice(diceElement) {
         diceElement.style.transition = 'transform 3s';
         const outcome = Math.floor(Math.random() * 6) + 1;
         const additionalRotationX = Math.floor(Math.random() * 4) * 360;
         const additionalRotationY = Math.floor(Math.random() * 4) * 360;
 
+        // Set rotation based on dice outcome
         let rotateX, rotateY;
         switch (outcome) {
             case 1: rotateX = 0; rotateY = 0; break;
@@ -97,15 +106,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return outcome;
     }
 
+    // Event listener for placing a bet
     placeBetButton.addEventListener('click', () => {
         const betAmount = parseFloat(amountInput.value);
 
+        // Clear error messages
         diceSelectionErrors.textContent = '';
         numberSelectionError1.textContent = '';
         numberSelectionError2.textContent = '';
         numberSelectionError3.textContent = '';
         inputError.textContent = '';
 
+        // Validate user inputs
         if (!selectedDice) {
             diceSelectionErrors.textContent = `Please select the number of dice you want to roll.`;
             return;
@@ -131,37 +143,35 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        // Deduct the bet amount from balance
         balance -= betAmount;
         balanceElement.textContent = `Balance: Ksh${balance}`;
 
+        // Roll the dice and collect outcomes
         const outcomes = [];
         for (let i = 0; i < selectedDice; i++) {
             outcomes.push(rollDice(diceElements[i]));
         }
 
+        // Evaluate bet result after dice roll
         setTimeout(() => {
-            const selectedNumbers = [selectedNumberDice1, selectedNumberDice2, selectedNumberDice3].filter(num => num !== null);
-            const matchingOutcomes = outcomes.filter(outcome => selectedNumbers.includes(outcome)).length;
+            // Check if each dice outcome matches the user's prediction
+            const winningOutcomes = [selectedNumberDice1, selectedNumberDice2, selectedNumberDice3]
+                .slice(0, selectedDice)
+                .every((num, index) => num === outcomes[index]);
+
             let payoutMultiplier = 0;
 
-            if (selectedDice === 1 && matchingOutcomes === 1) {
+            // Determine payout based on number of dice and matching outcomes
+            if (selectedDice === 1 && winningOutcomes) {
                 payoutMultiplier = 2;
-            } else if (selectedDice === 2) {
-                if (matchingOutcomes === 1) {
-                    payoutMultiplier = 2;
-                } else if (matchingOutcomes === 2) {
-                    payoutMultiplier = 3;
-                }
-            } else if (selectedDice === 3) {
-                if (matchingOutcomes === 1) {
-                    payoutMultiplier = 2;
-                } else if (matchingOutcomes === 2) {
-                    payoutMultiplier = 3;
-                } else if (matchingOutcomes === 3) {
-                    payoutMultiplier = 5;
-                }
+            } else if (selectedDice === 2 && winningOutcomes) {
+                payoutMultiplier = 3;
+            } else if (selectedDice === 3 && winningOutcomes) {
+                payoutMultiplier = 5;
             }
 
+            // Update balance and display result
             if (payoutMultiplier > 0) {
                 balance += betAmount * payoutMultiplier;
                 resultElement.textContent = `You won! Dice showed ${outcomes.join(', ')}.`;
@@ -176,9 +186,14 @@ document.addEventListener('DOMContentLoaded', function () {
             numberButtonsDice3.forEach(btn => btn.classList.remove('selected'));
             diceButtons.forEach(btn => btn.classList.remove('selected'));
 
+            // Display the user's selected numbers
+            const selectedNumbers = [selectedNumberDice1, selectedNumberDice2, selectedNumberDice3]
+                .filter(num => num !== null)
+                .slice(0, selectedDice);
             userSelectionNumbers.textContent = `You selected: ${selectedNumbers.join(', ')}`;
             dicePredictionSelection.style.display = 'none';
 
+            // Reset selected numbers and dice
             selectedNumberDice1 = null;
             selectedNumberDice2 = null;
             selectedNumberDice3 = null;
